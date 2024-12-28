@@ -229,3 +229,12 @@
 .close-modal-top:hover {
   color: #ff0000;
 }
+
+@font-face {
+  font-family: 'Amsterdam';
+  src: url('./fonts/amsterdam-one.woff2') format('woff2'),
+       url('./fonts/amsterdam-one.woff') format('woff'),
+       url('./fonts/amsterdam-one.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
