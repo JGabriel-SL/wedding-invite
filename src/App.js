@@ -227,7 +227,7 @@ const App = () => {
                 <strong>Jordânia Bezerra de Souza</strong>
                 <p><strong>Banco Santander</strong></p>
               </div>
-              <p>
+              <p style={{marginBottom: '50px'}}>
                 {t.thanks}
               </p>
             </div>
@@ -282,7 +282,7 @@ const App = () => {
               </div>
 
               <h3>{t.women}</h3>
-              <div>
+              <div style={{marginBottom: '50px'}}>
                 <p class="modal-text">{t.womenDress}</p>
                 <img src="./dress-women2.png" class="modal-image" />
 
