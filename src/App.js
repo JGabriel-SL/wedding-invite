@@ -1,11 +1,27 @@
 import React, { useState } from 'react';
 import './App.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationPin } from '@fortawesome/free-solid-svg-icons';
+import saveConfirmation from './service/confirmation.js';
+
 
 const App = () => {
   const [showInvitation, setShowInvitation] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
+  const [name, setName] = useState('');
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (name.trim()) {
+      await saveConfirmation(name);
+      setName('');
+    } else {
+      alert("Por favor, insira um nome.");
+    }
+
+    setIsConfirmModalOpen(false);
+
+  };
 
   const handleOpenInvitation = () => {
     setShowInvitation(true);
@@ -17,6 +33,14 @@ const App = () => {
 
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+  const openConfirmModal = () => {
+    setIsConfirmModalOpen(true);
+  };
+
+  const closeConfirmModal = () => {
+    setIsConfirmModalOpen(false);
   };
 
   return (
@@ -58,30 +82,28 @@ const App = () => {
           <div class="invite-buttons">
             <div class="invite-container-button">
               <button class="invite-button invite-button-color" onClick={openModal}>
-                <img src="./pix2.png" class="icon-img" />
+                <img src="./pix2.png" class="icon-img" alt="Presente Pix" />
               </button>
               <span class="invite-text-color text-detail">Presente Pix</span>
             </div>
 
             <div class="invite-container-button">
-              <button class="invite-button invite-button-color" onClick={openModal}
+              <button class="invite-button invite-button-color" onClick={openConfirmModal}
               >
-                <img src="./check.png" class="icon-img" />
+                <img src="./check.png" class="icon-img" alt="Confirmar Presença" />
               </button>
               <span class="invite-text-color text-detail">Confirmar Presença</span>
             </div>
 
             <div class="invite-container-button">
-            <a href='https://maps.app.goo.gl/i9bUs4eJc1qrFGCHA'>
-              <button class="invite-button invite-button-color"
-              >
-                <img src="./location.png" class="icon-img" />
-              </button>
+              <a href='https://maps.app.goo.gl/15PVAxiKqWRzcY9M8'>
+                <button class="invite-button invite-button-color"
+                >
+                  <img src="./location.png" class="icon-img" alt="Localização" />
+                </button>
               </a>
               <span class="invite-text-color text-detail">Localização</span>
             </div>
-
-
           </div>
         </div>
       )}
@@ -90,9 +112,9 @@ const App = () => {
         <div className="modal-overlay" onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <div className="modal-content">
-            <button className="close-modal-top" onClick={closeModal}>
-              &times;
-            </button>
+              <button className="close-modal-top" onClick={closeModal}>
+                &times;
+              </button>
               <h2 className="modal-title">Colabore com nossa Lua de Mel</h2>
               <p>
                 Se você deseja nos presentear de forma prática e rápida, disponibilizamos a
@@ -100,7 +122,7 @@ const App = () => {
                 carinho e ajudará a tornar este momento ainda mais especial.
               </p>
               <p>
-                <strong>Chave Pix:</strong> 998.360.253-91 (CPF)
+                <strong>Chave Pix:</strong> 3dfc915a-f21d-44f9-b91a-78face70cbe5 (Chave Aleatória)
               </p>
               <p>Ou escaneie o QR Code abaixo:</p>
               <div className="qrcode-container">
@@ -108,12 +130,42 @@ const App = () => {
               </div>
               <div>
                 <strong>Jordânia Bezerra de Souza</strong>
-                <p><strong>Banco Santander</strong></p> 
+                <p><strong>Banco Santander</strong></p>
               </div>
               <p>
                 Agradecemos de coração por sua generosidade e por fazer parte do nosso
                 grande dia. ❤️
               </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {isConfirmModalOpen && (
+        <div className="modal-overlay" onClick={closeConfirmModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-content">
+              <div style={{ margin: '20px', maxWidth: '400px', marginLeft: 'auto', marginRight: 'auto' }}>
+                <h1 class="modal-title">Confirme sua presença</h1>
+                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  <label htmlFor="name" class="form-label">Nome:</label>
+                  <input
+                    type="text"
+                    id="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Digite seu nome"
+                    class="form-input"
+                  />
+                  <button
+                    type="submit"
+                    class="form-button"
+                  >
+                    Confirmar
+                  </button>
+                </form>
+              </div>
+
             </div>
           </div>
         </div>

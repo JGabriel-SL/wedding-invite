@@ -171,6 +171,7 @@
 }
 
 .modal-title {
+  clear: both;
   font-size: 20px;
   font-family: 'Amsterdam', Arial, Helvetica, sans-serif;
 }
@@ -214,9 +215,6 @@
 }
 
 .close-modal-top {
-  position: absolute;
-  top: 50px;
-  right: 25px;
   background: none;
   border: none;
   font-size: 24px;
@@ -224,10 +222,41 @@
   color: #333;
   cursor: pointer;
   transition: color 0.3s ease;
+  float: right;
 }
 
 .close-modal-top:hover {
   color: #ff0000;
+}
+
+.form-input{
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.form-label {
+  text-align: left;
+}
+
+.form-button{
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  border: 'none';
+  border-radius: 5px;
+  cursor: 'pointer';
 }
 
 @font-face {
@@ -236,3 +265,4 @@
   font-weight: normal;
   font-style: normal;
 }
+
