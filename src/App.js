@@ -173,16 +173,16 @@ const App = () => {
               <span class="invite-text-color text-detail">Pix</span>
             </div>
 
-            <div class="invite-container-button">
+            {/* <div class="invite-container-button">
               <button class="invite-button invite-button-color" onClick={openConfirmModal}
               >
                 <img src="./check.png" class="icon-img" alt="Confirmar Presença" />
               </button>
               <span class="invite-text-color text-detail">{t.confirmPresence}</span>
               <span class="invite-text-color text-detail">{t.presence}</span>
-            </div>
+            </div> */}
 
-            <div class="invite-container-button">
+            {/* <div class="invite-container-button">
               <a href='https://maps.app.goo.gl/15PVAxiKqWRzcY9M8'>
                 <button class="invite-button invite-button-color"
                 >
@@ -191,7 +191,7 @@ const App = () => {
               </a>
               <span class="invite-text-color text-detail">{t.see}</span>
               <span class="invite-text-color text-detail">{t.location}</span>
-            </div>
+            </div> */}
 
             <div class="invite-container-button">
               <button class="invite-button invite-button-color" onClick={openDressModal}
